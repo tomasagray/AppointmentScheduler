@@ -1,0 +1,86 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 18, 2018, 11:53:24 AM
+    Author     : tomas
+*/
+
+GridPane, AnchorPane, BorderPane {
+    -fx-background-color: white;
+}
+ComboBox, TextField, PasswordField {
+    -fx-background-color: transparent;
+    -fx-border-color: lightgray;
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 12pt;
+}
+.button {
+    -fx-padding: 10px 35px 10px 35px;
+    -fx-background-color: #401cc4;
+    -fx-border-size: 2px;
+    -fx-border-color: #36199e;
+    
+    -fx-font-family: "Segoe UI", Arial, Tahoma, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+.sceneHeader {
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 32pt;
+    -fx-font-weight: bolder;
+}
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+.deleteButton {
+    -fx-background-color: white;
+    -fx-border-color: red;
+    -fx-padding: 5px 25px 5px 25px;
+    -fx-alignment: baseline-right;
+    
+    -fx-font-size: 10pt;
+    -fx-text-fill: red; 
+}
+.grayButton {
+    -fx-background-color:lightgray;
+    -fx-border-color: lightgray;
+    -fx-text-fill: black;
+}
+.heading, .subheading {
+    -fx-font-family: "Segoe UI", Arial, Tahoma, sans-serif;
+    -fx-font-size: 18pt;
+}
+.subheading {
+    -fx-font-weight: bold;
+    -fx-font-size: 12pt;
+}
+.separator  *.line {
+    -fx-border-style: solid;
+    -fx-border-color: #36199e;
+    -fx-border-width: 1px;
+}
+.errorMessage {
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+}
+
+/* Main menu */
+.menuBar {
+    -fx-background-color: #36199e;
+}
+.menuButton {
+    -fx-padding: 15px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.menuBar Button.selected {
+    -fx-background-color: #03ABE5;
+}

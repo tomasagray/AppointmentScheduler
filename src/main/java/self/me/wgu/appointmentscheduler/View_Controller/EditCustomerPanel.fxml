@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets ?>
+<?import javafx.scene.control.* ?>
+<?import javafx.scene.image.* ?>
+<?import javafx.scene.layout.* ?>
+
+<VBox fx:id="editCustomerPanel"
+      fx:controller="View_Controller.EditCustomerPanelController"
+      xmlns:fx="http://javafx.com/fxml/1" 
+      xmlns="http://javafx.com/javafx/8.0.151"  
+      VBox.vgrow="ALWAYS">
+    <children>
+
+        <HBox fx:id="editCustomerHeading" spacing="15">
+            <padding>
+                <Insets bottom="25" left="25" right="25" top="25" />
+            </padding>
+
+             <ImageView fx:id="editPencil" fitHeight="24" fitWidth="24">
+                 <image>
+                     <Image url="/View_Controller/res/edit-pencil.png" />
+                 </image>
+            </ImageView>
+            <Label style="-fx-text-fill: white" styleClass="heading" text="Edit" />
+        </HBox>
+
+        <VBox spacing="20">
+            <padding>
+                <Insets bottom="25" left="25" right="25" top="25" />
+            </padding>
+
+            <children>
+                <VBox spacing="5">
+                    <Label styleClass="subheading" text="Name" />
+                    <TextField fx:id="customerNameField" promptText="ex: John Doe" />
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label styleClass="subheading" text="Address" />
+                    <TextField fx:id="address" promptText="Address" />
+                    <TextField fx:id="address2" promptText="Address 2" />
+                    
+                    <ComboBox fx:id="city" promptText="Please select a city">
+                        <items> 
+                        </items>
+                    </ComboBox>
+                    
+                    <ComboBox fx:id="country" promptText="Please select a country">
+                        <items> 
+                        </items>
+                    </ComboBox>
+                    
+                    <TextField fx:id="postalCode" promptText="Postal Code" />
+                </VBox>
+                
+                <VBox spacing="5">
+                    <Label styleClass="subheading" text="Phone" />
+                    <TextField fx:id="customerPhone" promptText="(xxx) xxx-xxxx" />
+                </VBox>
+                
+                <HBox spacing="10">
+                    <CheckBox fx:id="customerIsActive" selected="FALSE"> </CheckBox>
+                    <Label styleClass="subheading" text="Active"></Label>
+                </HBox>
+                
+                
+                <HBox spacing="15">
+                    <Button fx:id="saveEditCustomer" onAction="#handleSaveEdit" text="Save">
+                    </Button>
+                    <Button fx:id="cancelEditCustomer" onAction="#handleCancelEdit" styleClass="grayButton" text="Cancel">
+                    </Button>
+                </HBox>
+                
+                <Label fx:id="errorMessage" styleClass="errorMessage" wrapText="true">
+                </Label>
+
+                <HBox>
+                    <Button fx:id="deleteCustomerButton" text="Delete"
+                            styleClass="deleteButton" onAction="#handleDeleteCustomer" >
+                        <graphic>
+                            <ImageView fitHeight="24" fitWidth="24">
+                                <image>
+                                    <Image url="/View_Controller/res/delete.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </HBox>
+
+            </children>
+        </VBox>
+    </children> 
+    </VBox>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String ?>
+<?import javafx.collections.FXCollections?>
+<?import java.net.URL ?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.* ?>
+<?import javafx.geometry.* ?>
+
+<BorderPane 
+    xmlns:fx="http://javafx.com/fxml/1" 
+    fx:controller="View_Controller.CustomControls.AddAppointmentDialogController">
+ 
+    <stylesheets>
+        <URL value="@/View_Controller/main.css" />
+        <URL value="@/View_Controller/calendar.css" />
+        <URL value="@/View_Controller/appointment.css" />
+    </stylesheets>
+    
+    <top>
+        <VBox fx:id="appointmentDlgHeader">
+            <children>
+                <HBox alignment="BASELINE_RIGHT">
+                    <children>
+                        <Button fx:id="closeDialogButton" onAction="#handleCloseDialog">
+                            <graphic>
+                                <ImageView fitHeight="16" fitWidth="16">
+                                    <image>
+                                        <Image url="/View_Controller/res/close-button.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets top="15" right="15" bottom="15" left="15" />
+                    </padding>
+
+                    <children>
+                        <ImageView fitHeight="32" fitWidth="32">
+                            <image>
+                                <Image url="/View_Controller/res/appointment.png" />
+                            </image>
+                        </ImageView>
+
+                        <TextField fx:id="appointmentName" promptText="Event name" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        
+    </top>
+    
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15" />
+            </padding>
+            
+            <children>
+                <HBox spacing="20"> 
+                    <children>
+                        <ComboBox fx:id="appointmentStart">
+                            <items>
+                            </items>
+                        </ComboBox>
+                        
+                        <ComboBox fx:id="appointmentEnd">
+                            <items> 
+                            </items>
+                        </ComboBox>
+                    </children>
+                </HBox>
+                
+                <VBox spacing="15">
+                    <children>
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <children>
+                                <Label text="Contact: " style="-fx-font-size: 12pt">
+                                </Label>
+                                <ComboBox fx:id="customerNames">
+                                    <items>
+                                    </items>
+                                </ComboBox>
+                            </children>
+                        </HBox>
+                        
+                        <TextField fx:id="appointmentDescription" promptText="Description" />
+                        
+                        <HBox spacing="10">
+                            <children>
+                                <TextField fx:id="appointmentLocation" promptText="Location" />
+                                <TextField fx:id="appointmentURL" promptText="URL" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <VBox alignment="CENTER">
+            <children>
+                <Label fx:id="errorMessage" styleClass="errorMessage" wrapText="TRUE"> 
+                </Label>
+                
+                <HBox alignment="BASELINE_RIGHT" spacing="10" fx:id="modalSubmitBar">
+                    <children>
+                        <Button fx:id="deleteAppointmentButton" text="Delete"
+                                styleClass="deleteButton" visible="FALSE"
+                                onAction="#handleDeleteAppointment">
+                            <graphic>
+                                <ImageView fitHeight="24" fitWidth="24">
+                                    <image>
+                                        <Image url="/View_Controller/res/delete.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="submitAppointment" text="Done" onAction="#handleDoneButton"> 
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </bottom> 
+</BorderPane>

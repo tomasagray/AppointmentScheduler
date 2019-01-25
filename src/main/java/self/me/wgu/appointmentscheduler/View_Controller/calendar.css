@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 22, 2018, 3:32:09 PM
+    Author     : tomas
+*/
+
+#calendarContainer {
+    -fx-overflow-y: hidden;
+}
+.calendarHeader > .label {
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 18pt;
+    -fx-font-weight: 200;
+    -fx-text-fill: #401cc4;
+}
+.calendarHeader > .button {
+    -fx-padding: 5px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #401cc4;
+}
+#daysOfWeek .label {
+    -fx-font-size: 14pt;
+    -fx-text-fill: #401cc4;
+    -fx-padding: 5px;
+}
+CalendarHour, DayOfMonth {
+    -fx-border-color: cyan;
+}
+.currentDay {
+    -fx-border-width: 5px 0px 0px 0px;
+    -fx-border-color: #401cc4;
+}
+#weekCalContainer {
+    -fx-border-width: 3px 0px 0px 0px;
+    -fx-border-color: cyan;
+}
+DateLabel {
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 14pt;
+}
+AppointmentBox {
+    -fx-background-color: #401cc4;
+    -fx-border-color: cyan;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+}
+AppointmentBox .label {
+    -fx-text-fill: cornflowerblue;
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+.appointmentBoxTitle {
+    -fx-font-weight: bold;
+    -fx-text-fill: cyan;
+}

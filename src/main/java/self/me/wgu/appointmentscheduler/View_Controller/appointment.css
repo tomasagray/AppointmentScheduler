@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 28, 2018, 2:29:03 PM
+    Author     : tomas
+*/
+
+BorderPane {
+    -fx-border-color: lightgray;
+}
+#appointmentDlgHeader {
+    -fx-background-color: #298835;
+}
+#appointmentName {
+    -fx-background-color: darkolivegreen;
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 14pt;
+    -fx-text-fill: white;
+}
+#closeDialogButton {
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+    -fx-border-size: 0px;
+    -fx-border-color: transparent;
+}
+#modalSubmitBar {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+}

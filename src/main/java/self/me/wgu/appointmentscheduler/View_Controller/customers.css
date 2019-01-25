@@ -1,0 +1,99 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 18, 2018, 2:12:42 PM
+    Author     : tomas
+*/
+
+/* Customers list */
+#addCustomerButton {
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    
+    -fx-font-size: 18pt;
+    -fx-text-fill: black;
+    -fx-padding: 0px;
+}
+.contactAnchor {
+    -fx-padding: 15px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 18pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: #401cc4;
+}
+ContactListing {
+    -fx-padding: 15px 0px 15px 0px;
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 14pt;
+    -fx-border-width: 2px 0px 2px 0px;
+    -fx-border-color: transparent;
+}
+#customerList ContactListing:hover {
+    -fx-background-color: cyan;
+    -fx-border-color: #03ABE5;
+    -fx-cursor: hand;
+}
+#customerList ContactListing.selected {
+    -fx-background-color: #03ABE5;
+}
+#customerList ContactListing.selected > Label {
+    -fx-text-fill: white;
+}
+
+/* Sidebar */
+#customerPanel {
+    -fx-background-color: lightgray;
+}
+#customerPanel > Label {
+    -fx-font-family:  "Segoe UI", Tahoma, Arial, sans-serif; 
+    -fx-font-size: 12pt;
+    -fx-text-fill: gray;
+    -fx-text-alignment: center;
+}
+#newCustomerPanel,
+#customerDetailsPanel, 
+#editCustomerPanel {
+    -fx-background-color: white;
+}
+/* Customer details panel */
+.customerHeadingContainer {    
+    -fx-padding: 25px;
+    -fx-alignment: CENTER;
+    -fx-background-color: cyan;
+    -fx-border-color: #03ABE5;
+}
+.customerHeading {
+    -fx-font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 18pt;
+    -fx-font-weight: 800;
+}
+#customerActive {
+    -fx-font-size: 10pt;
+    -fx-text-fill: #401cc4;
+    -fx-font-style: italic;
+}
+#customerDetails {
+    -fx-font-family:  "Segoe UI", Tahoma, Arial, sans-serif;
+    -fx-font-size: 12pt;
+}
+#editButton {
+    -fx-border-width: 0px;
+    -fx-text-fill: #36199e;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+
+/* Edit customer panel */
+#editCustomerHeading {
+    -fx-background-color: #401cc4;
+}
+#editCustomerPanel > .heading {
+    -fx-text-fill: white;
+}
