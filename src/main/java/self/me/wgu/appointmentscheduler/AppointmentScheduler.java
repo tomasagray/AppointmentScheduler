@@ -14,7 +14,6 @@
 package self.me.wgu.appointmentscheduler;
 
 import java.io.IOException;
-import java.net.URL;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;

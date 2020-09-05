@@ -73,7 +73,7 @@ public class AddAppointmentDialogController implements Initializable, Resettable
     {   
         if( validateAppointmentDialog() )
         {
-            // Update the appoinment being modelled by this
+            // Update the appointment being modelled by this
             // dialog
             updateLocalAppointment();
             
@@ -368,7 +368,7 @@ public class AddAppointmentDialogController implements Initializable, Resettable
             }
             @Override
             public Customer fromString(String customerString) {
-                return null;        // Just becaue the interface wants it
+                return null;        // Just because the interface wants it
             }
         });
         appointmentStart.setConverter(
