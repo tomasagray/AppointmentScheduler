@@ -8,15 +8,12 @@ package self.me.wgu.appointmentscheduler.controller.custom;
 import javafx.scene.control.Label;
 
 /**
- *
  * @author tomas
  */
-public class DateLabel extends Label
-{
+public class DateLabel extends Label {
 
-  public DateLabel( int date )
-    {
-        super();
-      this.setText( date +"" );
-    }
+  public DateLabel(int date) {
+    super();
+    this.setText(date + "");
+  }
 }

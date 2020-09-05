@@ -9,24 +9,22 @@ import java.time.LocalDate;
 import javafx.scene.layout.AnchorPane;
 
 /**
- *
  * @author tomas
  */
-public class WeekDateHeading extends AnchorPane 
-{
+public class WeekDateHeading extends AnchorPane {
 
-  public WeekDateHeading(LocalDate date)
-    {
-        super();
-      // Add current day styles, where appropriate
-        if( date.equals(LocalDate.now()) )
-            this.getStyleClass().add("currentDay");
-        else
-            this.setStyle("-fx-border-color: cyan");
-        
-        DateLabel dl = new DateLabel(date.getDayOfMonth());
-        AnchorPane.setTopAnchor(dl, 10.0);
-        AnchorPane.setLeftAnchor( dl, 5.0);
-        this.getChildren().add( dl );
+  public WeekDateHeading(LocalDate date) {
+    super();
+    // Add current day styles, where appropriate
+    if (date.equals(LocalDate.now())) {
+      this.getStyleClass().add("currentDay");
+    } else {
+      this.setStyle("-fx-border-color: cyan");
     }
+
+    DateLabel dl = new DateLabel(date.getDayOfMonth());
+    AnchorPane.setTopAnchor(dl, 10.0);
+    AnchorPane.setLeftAnchor(dl, 5.0);
+    this.getChildren().add(dl);
+  }
 }

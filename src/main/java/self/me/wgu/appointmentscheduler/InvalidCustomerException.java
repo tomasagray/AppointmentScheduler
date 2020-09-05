@@ -6,15 +6,13 @@
 package self.me.wgu.appointmentscheduler;
 
 /**
- *
  * @author tomas
  */
-public class InvalidCustomerException extends RuntimeException
-{
-    @Override
-    public String getMessage()
-    {
-        return "Please select a valid customer contact for this appointment.";
-    }
-    
+public class InvalidCustomerException extends RuntimeException {
+
+  @Override
+  public String getMessage() {
+    return "Please select a valid customer contact for this appointment.";
+  }
+
 }

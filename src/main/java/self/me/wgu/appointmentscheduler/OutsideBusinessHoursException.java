@@ -6,16 +6,14 @@
 package self.me.wgu.appointmentscheduler;
 
 /**
- *
  * @author tomas
  */
-public class OutsideBusinessHoursException extends RuntimeException
-{
-    @Override
-    public String getMessage()
-    {
-        return "The selected appointment times fall outside "
-                + "of normal business hours.";
-    }
-    
+public class OutsideBusinessHoursException extends RuntimeException {
+
+  @Override
+  public String getMessage() {
+    return "The selected appointment times fall outside "
+        + "of normal business hours.";
+  }
+
 }

@@ -6,14 +6,12 @@
 package self.me.wgu.appointmentscheduler;
 
 /**
- *
  * @author tomas
  */
-public class EmptyFieldException extends RuntimeException 
-{
-    @Override
-    public String getMessage()
-    {
-        return "All fields required. Please ensure all fields contain valid data.";
-    }
+public class EmptyFieldException extends RuntimeException {
+
+  @Override
+  public String getMessage() {
+    return "All fields required. Please ensure all fields contain valid data.";
+  }
 }

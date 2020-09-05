@@ -6,44 +6,41 @@
 package self.me.wgu.appointmentscheduler.model;
 
 /**
- *
  * @author tomas
  */
-public class Country 
-{
-    private int countryID;
-    private String countryName;
-    
-    public Country(int id, String name)
-    {
-        this.countryID = id;
-        this.countryName = name;
-    }
-    
-    @Override
-    public String toString()
-    {
-        return getCountryName();
-    }
-    
-    // Getters
-    // -------------------------------------------------------------------------
-    public int getCountryID()
-    {
-        return this.countryID;
-    }
-    public String getCountryName()
-    {
-        return this.countryName;
-    }
-    // Setters
-    // -------------------------------------------------------------------------
-    public void setCountryID(int countryID) {
-        this.countryID = countryID;
-    }
+public class Country {
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
-    
+  private int countryID;
+  private String countryName;
+
+  public Country(int id, String name) {
+    this.countryID = id;
+    this.countryName = name;
+  }
+
+  @Override
+  public String toString() {
+    return getCountryName();
+  }
+
+  // Getters
+  // -------------------------------------------------------------------------
+  public int getCountryID() {
+    return this.countryID;
+  }
+
+  // Setters
+  // -------------------------------------------------------------------------
+  public void setCountryID(int countryID) {
+    this.countryID = countryID;
+  }
+
+  public String getCountryName() {
+    return this.countryName;
+  }
+
+  public void setCountryName(String countryName) {
+    this.countryName = countryName;
+  }
+
 }

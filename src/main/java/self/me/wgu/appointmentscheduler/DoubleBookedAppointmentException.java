@@ -6,15 +6,13 @@
 package self.me.wgu.appointmentscheduler;
 
 /**
- *
  * @author tomas
  */
-public class DoubleBookedAppointmentException extends RuntimeException
-{
-    @Override
-    public String getMessage()
-    {
-        return "There is already an appointment during this time.";
-    }
-    
+public class DoubleBookedAppointmentException extends RuntimeException {
+
+  @Override
+  public String getMessage() {
+    return "There is already an appointment during this time.";
+  }
+
 }

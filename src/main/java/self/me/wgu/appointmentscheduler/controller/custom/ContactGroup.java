@@ -9,15 +9,13 @@ import java.util.List;
 import javafx.scene.layout.VBox;
 
 /**
- *
  * @author tomas
  */
-public class ContactGroup extends VBox 
-{
-    public ContactGroup(Character ch, List<ContactListing> contacts)
-    {
-        super();
-        this.getChildren().add( new ContactAnchor(ch));
-        contacts.forEach(c -> this.getChildren().add(c));
-    }
+public class ContactGroup extends VBox {
+
+  public ContactGroup(Character ch, List<ContactListing> contacts) {
+    super();
+    this.getChildren().add(new ContactAnchor(ch));
+    contacts.forEach(c -> this.getChildren().add(c));
+  }
 }

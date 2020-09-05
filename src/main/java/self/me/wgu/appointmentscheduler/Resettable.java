@@ -6,10 +6,9 @@
 package self.me.wgu.appointmentscheduler;
 
 /**
- *
  * @author tomas
  */
-public interface Resettable 
-{
-    void reset();
+public interface Resettable {
+
+  void reset();
 }

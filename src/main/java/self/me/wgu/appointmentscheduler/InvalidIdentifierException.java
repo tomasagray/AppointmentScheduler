@@ -6,14 +6,12 @@
 package self.me.wgu.appointmentscheduler;
 
 /**
- *
  * @author tomas
  */
-public class InvalidIdentifierException extends RuntimeException
-{
-    @Override
-    public String getMessage()
-    {
-        return "Invalid indentifier was supplied.";
-    }
+public class InvalidIdentifierException extends RuntimeException {
+
+  @Override
+  public String getMessage() {
+    return "Invalid indentifier was supplied.";
+  }
 }

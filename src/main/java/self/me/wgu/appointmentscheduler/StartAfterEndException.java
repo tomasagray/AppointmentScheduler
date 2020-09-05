@@ -6,14 +6,12 @@
 package self.me.wgu.appointmentscheduler;
 
 /**
- *
  * @author tomas
  */
-public class StartAfterEndException extends RuntimeException
-{
-    @Override
-    public String getMessage()
-    {
-        return "The selected appointment start time is after the end.";
-    }
+public class StartAfterEndException extends RuntimeException {
+
+  @Override
+  public String getMessage() {
+    return "The selected appointment start time is after the end.";
+  }
 }

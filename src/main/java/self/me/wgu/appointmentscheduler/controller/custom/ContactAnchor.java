@@ -13,21 +13,19 @@ import javafx.scene.control.Button;
  *
  * @author tomas
  */
-public class ContactAnchor extends Button
-{
-    
-    public ContactAnchor(String label)
-    { 
-        super();
-        this.setText(label);
-        this.getStyleClass().add("contactAnchor");
-        this.setOnMouseClicked((EventHandler) e -> {
-            Button btn = (Button) e.getSource();
-        });
-    }
-    public ContactAnchor(Character c)
-    {
-        this(c.toString());
-    }
-    
+public class ContactAnchor extends Button {
+
+  public ContactAnchor(String label) {
+    super();
+    this.setText(label);
+    this.getStyleClass().add("contactAnchor");
+    this.setOnMouseClicked((EventHandler) e -> {
+      Button btn = (Button) e.getSource();
+    });
+  }
+
+  public ContactAnchor(Character c) {
+    this(c.toString());
+  }
+
 }

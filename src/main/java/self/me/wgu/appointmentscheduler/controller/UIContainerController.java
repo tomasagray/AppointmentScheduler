@@ -24,99 +24,94 @@ import self.me.wgu.appointmentscheduler.SettingsManager;
  *
  * @author tomas
  */
-public class UIContainerController implements Initializable 
-{
-    
-    @FXML
-    private VBox mainUISpace;
-    @FXML
-    private VBox menuBar;
-    @FXML
-    private Button calendarButton;    
-    @FXML
-    private Button customersButton;    
-    @FXML
-    private Button reportsButton;    
-    @FXML
-    private Button settingsButton;    
-    
-    
-    @FXML
-    public void handleCalendarButton()
-    {
-        mainUISpace.getChildren().clear();
-        // Ensure calendar is populated
-        CalendarController cc = SceneManager.getInstance()
-                                            .getLoader("Calendar")
-                                            .getController();
-        cc.handleCalendarToday();
-        
-        // Add calendar to view space
-        mainUISpace.getChildren()
-                .add( SceneManager.getInstance().getScene("Calendar") );
-        
-        // Highlight menu item
-        resetSelectionStyles();
-        calendarButton.getStyleClass().add("selected");
-        
-    }
-    @FXML
-    public void handleCustomersButton()
-    {
-        mainUISpace.getChildren().clear();
-        mainUISpace.getChildren()
-                .add( SceneManager.getInstance().getScene("Customers") );
-        resetSelectionStyles();
-        customersButton.getStyleClass().add("selected");
-    }
-    @FXML
-    public void handleReportsButton()
-    {
-        mainUISpace.getChildren().clear();
-        mainUISpace.getChildren()
-                .add( SceneManager.getInstance().getScene("Reports") );
-        resetSelectionStyles();
-        reportsButton.getStyleClass().add("selected");
-    }
-    @FXML
-    public void handleSettingsButton()
-    {
-        mainUISpace.getChildren().clear();
-        mainUISpace.getChildren()
-                .add( SceneManager.getInstance().getScene("Settings") );
-        resetSelectionStyles();
-        settingsButton.getStyleClass().add("selected");
-    }
-    @FXML
-    public void handleLogoutButton()
-    {
-        // Confirm the user really wants to logout
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setHeaderText("Logout");
-        alert.setContentText("Are you sure?");
-        Optional<ButtonType> buttonClicked = alert.showAndWait();
-        
-        if(buttonClicked.isPresent() && buttonClicked.get() == ButtonType.OK)
-        {
-            LoginManager.getInstance().logout(
-                    SettingsManager.getInstance().getUser()
-            );
-        }
-      
-    }
-    
-    private void resetSelectionStyles()
-    {
-        menuBar.getChildrenUnmodifiable().forEach((n) -> n.getStyleClass().remove("selected"));
+public class UIContainerController implements Initializable {
+
+  @FXML
+  private VBox mainUISpace;
+  @FXML
+  private VBox menuBar;
+  @FXML
+  private Button calendarButton;
+  @FXML
+  private Button customersButton;
+  @FXML
+  private Button reportsButton;
+  @FXML
+  private Button settingsButton;
+
+
+  @FXML
+  public void handleCalendarButton() {
+    mainUISpace.getChildren().clear();
+    // Ensure calendar is populated
+    CalendarController cc = SceneManager.getInstance()
+        .getLoader("Calendar")
+        .getController();
+    cc.handleCalendarToday();
+
+    // Add calendar to view space
+    mainUISpace.getChildren()
+        .add(SceneManager.getInstance().getScene("Calendar"));
+
+    // Highlight menu item
+    resetSelectionStyles();
+    calendarButton.getStyleClass().add("selected");
+
+  }
+
+  @FXML
+  public void handleCustomersButton() {
+    mainUISpace.getChildren().clear();
+    mainUISpace.getChildren()
+        .add(SceneManager.getInstance().getScene("Customers"));
+    resetSelectionStyles();
+    customersButton.getStyleClass().add("selected");
+  }
+
+  @FXML
+  public void handleReportsButton() {
+    mainUISpace.getChildren().clear();
+    mainUISpace.getChildren()
+        .add(SceneManager.getInstance().getScene("Reports"));
+    resetSelectionStyles();
+    reportsButton.getStyleClass().add("selected");
+  }
+
+  @FXML
+  public void handleSettingsButton() {
+    mainUISpace.getChildren().clear();
+    mainUISpace.getChildren()
+        .add(SceneManager.getInstance().getScene("Settings"));
+    resetSelectionStyles();
+    settingsButton.getStyleClass().add("selected");
+  }
+
+  @FXML
+  public void handleLogoutButton() {
+    // Confirm the user really wants to logout
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setHeaderText("Logout");
+    alert.setContentText("Are you sure?");
+    Optional<ButtonType> buttonClicked = alert.showAndWait();
+
+    if (buttonClicked.isPresent() && buttonClicked.get() == ButtonType.OK) {
+      LoginManager.getInstance().logout(
+          SettingsManager.getInstance().getUser()
+      );
     }
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-        System.out.println("Initializing: UIContainer");
-    }
-    
+  }
+
+  private void resetSelectionStyles() {
+    menuBar.getChildrenUnmodifiable().forEach((n) -> n.getStyleClass().remove("selected"));
+  }
+
+  /**
+   * Initializes the controller class.
+   */
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    System.out.println("Initializing: UIContainer");
+  }
+
 }
