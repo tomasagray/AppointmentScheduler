@@ -1,4 +1,4 @@
-/**
+/*
  * Appointment Scheduler
  * -----------------------------------------------------------------------------
  * 
@@ -13,9 +13,8 @@
 
 package self.me.wgu.appointmentscheduler;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
+import java.net.URL;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -24,65 +23,57 @@ import javafx.stage.Stage;
 public class AppointmentScheduler extends Application 
 {
     @Override
-    public void start(Stage stage) throws Exception 
+    public void start(Stage stage)
     {
-        // For Locale testing
-        // ---------------------------------------------------------------------
-//        Locale.setDefault(new Locale("es"));
-//        Locale.setDefault(new Locale("ro"));
-        
-        try {
-        
-        // Load settings
-        // ---------------------------------------------------------------------
-        SettingsManager.getInstance().loadSettingsData();
-        
-        // Setup SceneManager
-        // ---------------------------------------------------------------------
-        SceneManager sm = SceneManager.getInstance();
-        sm.setStage(stage);
-        // Setup application title bar
-        sm.getStage().setTitle("Appointment Scheduler");
-        sm.getStage().getIcons().add(new Image("/View_Controller/res/icon.png") );
-        
-        // Load Customers screen sub-panels 
-        // ---------------------------------------------------------------------
-        sm.addScene(
-                "NewCustomerPanel", "/View_Controller/NewCustomerPanel.fxml"
-        );
-        sm.addScene(
-                "CustomerDetailsPanel", "/View_Controller/CustomerDetailsPanel.fxml"
-        );
-        sm.addScene(
-                "EditCustomerPanel", "/View_Controller/EditCustomerPanel.fxml"
-        );
-        
-        // Load Calendar views
-        // ---------------------------------------------------------------------
-        sm.addScene("MonthCalendar", "/View_Controller/CustomControls/MonthCalendar.fxml");
-        sm.addScene("WeekCalendar", "/View_Controller/CustomControls/WeekCalendar.fxml");
-        
-        // Add main views to the SceneManager
-        // ---------------------------------------------------------------------
-        sm.addScene("Login", "/View_Controller/LoginForm.fxml" );
-        sm.addScene("UIContainer", "/View_Controller/UIContainer.fxml");
-        sm.addScene("Customers", "/View_Controller/Customers.fxml" );
-        sm.addScene("Calendar", "/View_Controller/Calendar.fxml" );
-        sm.addScene("Reports", "/View_Controller/Reports.fxml" );
-        sm.addScene("Settings", "/View_Controller/Settings.fxml" );
 
-        // Display login 
-        // ---------------------------------------------------------------------
-        sm.initializeLoginForm();
-        sm.getStage().show();
-        
-        } catch( RuntimeException e ) {
-            System.out.println("FATAL ERROR: Unable to load required application resources.");
-            System.out.println( e.getMessage() );
-            System.out.println("Exiting...");
-            
-            System.exit(1);
+        try {
+            // Load settings
+            // ---------------------------------------------------------------------
+            SettingsManager.getInstance().loadSettingsData();
+
+            // Setup SceneManager
+            // ---------------------------------------------------------------------
+            SceneManager sm = SceneManager.getInstance();
+            sm.setStage(stage);
+            // Setup application title bar
+            sm.getStage().setTitle("Appointment Scheduler");
+        final String url = getClass().getResource("/img/icon.png").toString();
+        sm.getStage().getIcons().add(new Image(url) );
+
+            // Load Customers screen sub-panels
+            // ---------------------------------------------------------------
+            sm.addScene(
+                    "NewCustomerPanel", "/fxml/NewCustomerPanel.fxml"
+            );
+            sm.addScene(
+                    "CustomerDetailsPanel", "/fxml/CustomerDetailsPanel.fxml"
+            );
+            sm.addScene(
+                    "EditCustomerPanel", "/fxml/EditCustomerPanel.fxml"
+            );
+
+            // Load Calendar views
+            // ---------------------------------------------------------------------
+            sm.addScene("MonthCalendar", "/fxml/MonthCalendar.fxml");
+            sm.addScene("WeekCalendar", "/fxml/WeekCalendar.fxml");
+
+            // Add main views to the SceneManager
+            // ---------------------------------------------------------------------
+            sm.addScene("Login", "/fxml/LoginForm.fxml" );
+            sm.addScene("UIContainer", "/fxml/UIContainer.fxml");
+            sm.addScene("Customers", "/fxml/Customers.fxml" );
+            sm.addScene("Calendar", "/fxml/Calendar.fxml" );
+            sm.addScene("Reports", "/fxml/Reports.fxml" );
+            sm.addScene("Settings", "/fxml/Settings.fxml" );
+
+            // Display login
+            // ---------------------------------------------------------------------
+            sm.initializeLoginForm();
+            sm.getStage().show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     /**
@@ -98,8 +89,8 @@ public class AppointmentScheduler extends Application
      * a more recognizable String, e.g.,
      *      14  -> "2:00 PM"
      * 
-     * @param hour
-     * @return 
+     * @param hour Hour of the day
+     * @return  Formatted time String
      */
     public static String formatTime(int hour)
     {

@@ -11,5 +11,5 @@ package self.me.wgu.appointmentscheduler;
  */
 public interface Resettable 
 {
-    public void reset();
+    void reset();
 }

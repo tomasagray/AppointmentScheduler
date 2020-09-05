@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox fx:id="customerDetailsPanel"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="self.me.wgu.appointmentscheduler.controller.CustomerDetailsPanelController"
+  VBox.vgrow="ALWAYS">
+    <VBox styleClass="customerHeadingContainer" alignment="CENTER">
+        <Label fx:id="customerName" styleClass="customerHeading" wrapText="true">
+        </Label>
+        <Label fx:id="customerActive"/>
+    </VBox>
+
+    <HBox>
+        <VBox fx:id="customerDetails"
+          HBox.hgrow="ALWAYS" spacing="15">
+
+            <padding>
+                <Insets top="25" right="15" bottom="25" left="15"/>
+            </padding>
+
+            <HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Label text="Contact" style="-fx-font-weight: bold">
+                    </Label>
+                </HBox>
+
+                <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                    <Button fx:id="editButton" text="Edit"
+                      onAction="#handleEditButton">
+                        <graphic>
+                            <ImageView fitHeight="16" fitWidth="16">
+                                <Image
+                                  url="/img/edit-pencil_blue.png"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </HBox>
+
+            <VBox>
+                <Label text="Address"
+                  style="-fx-font-weight: bold; -fx-text-fill: darkgray;">
+                </Label>
+                <Label fx:id="address">
+                </Label>
+            </VBox>
+
+            <Separator/>
+
+            <VBox>
+                <Label text="Phone"
+                  style="-fx-font-weight: bold; -fx-text-fill: darkgray;">
+                </Label>
+                <Label fx:id="phone">
+                </Label>
+            </VBox>
+
+        </VBox>
+    </HBox>
+</VBox>

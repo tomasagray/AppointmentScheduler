@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.* ?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.* ?>
+<?import self.me.wgu.appointmentscheduler.controller.custom.* ?>
+
+<VBox HBox.hgrow="ALWAYS" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="self.me.wgu.appointmentscheduler.controller.custom.WeekCalendarController">
+    <GridPane fx:id="daysOfWeek" HBox.hgrow="ALWAYS">
+        <padding>
+            <Insets left="24"/>
+        </padding>
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="14.24" prefWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="14.24" prefWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="14.24" prefWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="14.24" prefWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="14.24" prefWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="14.24" prefWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="14.24" prefWidth="200"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints/>
+        </rowConstraints>
+        <Label text="Sunday" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label text="Monday" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label text="Tuesday" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Label text="Wednesday" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+        <Label text="Thursday" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+        <Label text="Friday" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+        <Label text="Saturday" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+    </GridPane>
+
+    <GridPane fx:id="weekDates">
+        <padding>
+            <Insets left="24"/>
+        </padding>
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" percentWidth="14.24"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" percentWidth="14.24"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" percentWidth="14.24"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" percentWidth="14.24"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" percentWidth="14.24"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" percentWidth="14.24"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" percentWidth="14.24"/>
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints minHeight="75" prefHeight="75"/>
+        </rowConstraints>
+
+    </GridPane>
+    
+    <ScrollPane fx:id="weekCalContainer" hbarPolicy="NEVER">
+        <HBox fx:id="weekCalOuter">
+            <HoursList fx:id="hours" minWidth="24"/>
+            <GridPane fx:id="weekCalendar">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity"
+                      percentWidth="14.24"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity"
+                      percentWidth="14.24"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity"
+                      percentWidth="14.24"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity"
+                      percentWidth="14.24"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity"
+                      percentWidth="14.24"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity"
+                      percentWidth="14.24"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity"
+                      percentWidth="14.24"/>
+                </columnConstraints>
+
+            </GridPane>
+        </HBox>
+    </ScrollPane>
+
+</VBox>

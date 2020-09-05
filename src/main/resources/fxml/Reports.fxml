@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="self.me.wgu.appointmentscheduler.controller.ReportsController"
+  style="-fx-background-color: white"
+  spacing="25">
+
+  <stylesheets>
+    <URL value="@/css/main.css"/>
+    <URL value="@/css/calendar.css"/>
+    <URL value="@/css/reports.css"/>
+  </stylesheets>
+
+  <padding>
+    <Insets top="25" right="25" bottom="25" left="25"/>
+  </padding>
+
+
+  <Label text="Reports" styleClass="sceneHeader"/>
+
+  <Separator/>
+
+  <VBox spacing="5">
+    <Hyperlink onAction="#handleApptTypesPerMonth" text="Number of appointment types by month"/>
+    <VBox fx:id="apptTypesPerMonth" styleClass="reportBox"/>
+    <Hyperlink onAction="#handleConsultantSchedules" text="Consultant Appointment Load"/>
+    <VBox fx:id="consultantSchedules" styleClass="reportBox"/>
+    <Hyperlink onAction="#handleLoginReport" text="Login Records"/>
+    <VBox fx:id="loginReport" styleClass="reportBox">
+      <TableView fx:id="loginRecordsTable" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <columnResizePolicy>
+          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+
+        <columns>
+          <TableColumn fx:id="userNameColumn" text="User Name">
+            <cellValueFactory>
+              <PropertyValueFactory property="userName"/>
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="passwordColumn" text="Password">
+            <cellValueFactory>
+              <PropertyValueFactory property="password"/>
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="timestampColumn" text="Timestamp">
+            <cellValueFactory>
+              <PropertyValueFactory property="timestamp"/>
+            </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="successColumn" text="Successful?">
+            <cellValueFactory>
+              <PropertyValueFactory property="success"/>
+            </cellValueFactory>
+          </TableColumn>
+        </columns>
+      </TableView>
+    </VBox>
+  </VBox>
+</VBox>

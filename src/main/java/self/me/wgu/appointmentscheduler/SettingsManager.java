@@ -7,8 +7,8 @@ package self.me.wgu.appointmentscheduler;
 
 import java.io.*;
 import java.util.*;
-import self.me.wgu.appointmentscheduler.Model.SettingsData;
-import self.me.wgu.appointmentscheduler.Model.User;
+import self.me.wgu.appointmentscheduler.model.SettingsData;
+import self.me.wgu.appointmentscheduler.model.User;
 
 /**
  *
@@ -42,7 +42,7 @@ public class SettingsManager
     
     private SettingsManager() {}
     
-    public final static SettingsManager getInstance()
+    public static SettingsManager getInstance()
     {
         return instance;
     }
@@ -69,8 +69,7 @@ public class SettingsManager
     {   
         // Overwrite default settings if a settings file exists
         Optional<SettingsData> settings = this.loadSettingsFile();
-        if( settings.isPresent() )
-            this.settingsData = settings.get(); 
+        settings.ifPresent(data -> this.settingsData = data);
     }
  
     
@@ -85,7 +84,7 @@ public class SettingsManager
     /**
      * Reads the settings file and loads the data into a SettingsData
      * object, which it returns.
-     * @return 
+     * @return An Optional of SettingsData
      */
     private Optional<SettingsData> loadSettingsFile()
     {
@@ -94,7 +93,7 @@ public class SettingsManager
         try( 
             FileInputStream fis = new FileInputStream (
                                      new File( SETTINGS_FILE ));
-            ObjectInputStream ois = new ObjectInputStream(fis);
+            ObjectInputStream ois = new ObjectInputStream(fis)
         )
         {
             settings = (SettingsData)ois.readObject();
@@ -110,14 +109,14 @@ public class SettingsManager
     
     /**
      * Writes the SettingsData object to a file.
-     * @param settings
+     * @param settings The SettingsData to be written to disk
      */
     public void writeSettingsFile(SettingsData settings)
     {
         try(
             FileOutputStream fos = new FileOutputStream(
                                     new File( SETTINGS_FILE ));
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            ObjectOutputStream oos = new ObjectOutputStream(fos)
         ) {
             oos.writeObject(settings);
             

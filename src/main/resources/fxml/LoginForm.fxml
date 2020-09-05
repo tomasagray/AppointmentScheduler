@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<GridPane fx:id="loginForm"
+  alignment="center"
+  prefHeight="400" prefWidth="280"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="self.me.wgu.appointmentscheduler.controller.LoginFormController">
+
+    <stylesheets>
+        <URL value="@/css/main.css"/>
+    </stylesheets>
+
+    <padding>
+        <Insets top="25" bottom="45" left="25" right="25"/>
+    </padding>
+
+    <VBox fx:id="loginHeading" spacing="15" alignment="CENTER"
+      GridPane.columnIndex="0" GridPane.rowIndex="0">
+
+        <ImageView fx:id="loginAvatar" fitHeight="64" fitWidth="64">
+            <Image url="/img/avatar.png"/>
+        </ImageView>
+
+        <Label fx:id="signIn" styleClass="heading" text="Sign In"/>
+
+    </VBox>
+
+    <VBox fx:id="loginCredentials" spacing="15" alignment="CENTER"
+      GridPane.columnIndex="0" GridPane.rowIndex="1">
+
+        <padding>
+            <Insets top="25"/>
+        </padding>
+
+        <TextField fx:id="loginUsername" promptText="Username..."
+          maxWidth="200"/>
+        <PasswordField fx:id="loginPassword" promptText="Password..."
+          maxWidth="200"/>
+
+        <HBox alignment="CENTER">
+            <Label fx:id="errorMessages" styleClass="errorMessage"
+              minHeight="40"
+              wrapText="TRUE">
+            </Label>
+        </HBox>
+
+        <Button fx:id="loginSubmit" text="Sign In"
+          onAction="#handleLoginSubmit">
+        </Button>
+
+    </VBox>
+</GridPane>

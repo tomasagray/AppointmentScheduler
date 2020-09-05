@@ -10,12 +10,12 @@ import java.time.*;
 import java.util.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import self.me.wgu.appointmentscheduler.Model.Address;
-import self.me.wgu.appointmentscheduler.Model.Appointment;
-import self.me.wgu.appointmentscheduler.Model.City;
-import self.me.wgu.appointmentscheduler.Model.Country;
-import self.me.wgu.appointmentscheduler.Model.Customer;
-import self.me.wgu.appointmentscheduler.Model.User;
+import self.me.wgu.appointmentscheduler.model.Address;
+import self.me.wgu.appointmentscheduler.model.Appointment;
+import self.me.wgu.appointmentscheduler.model.City;
+import self.me.wgu.appointmentscheduler.model.Country;
+import self.me.wgu.appointmentscheduler.model.Customer;
+import self.me.wgu.appointmentscheduler.model.User;
 
 /**
  *
@@ -37,14 +37,14 @@ public class MySQLConnection
     {
         driver = "com.mysql.cj.jdbc.Driver";
         db = "U04hNx";
-        url = "jdbc:mysql://52.206.157.109/" + db;
+        url = "jdbc:mysql://localhost/" + db;
         user = "U04hNx";
         pass = "53688244537";
         
         connect();
     }
     
-    public final static MySQLConnection getInstance()
+    public static MySQLConnection getInstance()
     {
         return instance;
     }
@@ -61,10 +61,10 @@ public class MySQLConnection
                 conn = DriverManager.getConnection( url, user, pass );
                 // Success!
                 System.out.println("Connected to database: " + db);
-            } catch (SQLException e) {
+            } catch (SQLException | ClassNotFoundException e) {
                 System.out.println("COULD NOT CONNECT TO DATABASE AT: " + url + "!!!");
-            } catch( ClassNotFoundException e ) {
-                System.out.println("Class "+ driver +" not found!");
+                e.printStackTrace();
+                System.exit(1);
             }
         }
     }
@@ -131,11 +131,15 @@ public class MySQLConnection
     // ---------------------------------------------------------------------- \\
     /**
      * Adds an array of Country objects to the database
-     * @param countries 
+     * @param countries Array of Countries
      */
     public void addCountries( Country... countries )
     {
         Set<Integer> countryIDs = getIDs("country");
+        if (countryIDs == null) {
+            return;
+        }
+
         String query = "INSERT INTO country(countryID, country, createDate, createdBy, lastUpdateBy) "
                 + "VALUES(?,?,?,?,?)";
         
@@ -164,7 +168,7 @@ public class MySQLConnection
     /**
      * Get a single Country, as specified by the Country ID (int)
      * @param countryID int
-     * @return 
+     * @return The requested Country, or null if not found
      */
     public Country getCountry( int countryID )
     {
@@ -223,6 +227,10 @@ public class MySQLConnection
     public void addCities( City... cities )
     {
         Set<Integer> cityIDs = getIDs("city");
+        if (cityIDs == null) {
+            return;
+        }
+
         String query = "INSERT INTO city (cityID, city, countryID, createDate, createdBy, lastUpdateBy) "
                 + "VALUES(?,?,?,?,?,?)";
         
@@ -262,7 +270,7 @@ public class MySQLConnection
     /**
      * Get one city, specified by that city's ID
      * @param cityID int
-     * @return 
+     * @return The City, or null
      */
     public City getCity(int cityID)
     {
@@ -291,7 +299,7 @@ public class MySQLConnection
     
     /**
      * Get an alphabetized list of City objects from the database
-     * @return 
+     * @return  A List of City, or null
      */
     public List<City> getCities()
     {
@@ -326,12 +334,16 @@ public class MySQLConnection
      * supplied address(es) is already in use, it will be overwritten
      * with a new value;
      * 
-     * @param addresses
+     * @param addresses Array of Addresses
      * 
      */
     public void addAddresses( Address... addresses )
     {
         Set<Integer> addressIDs = getIDs("address");
+        if (addressIDs == null) {
+            return;
+        }
+
         String query = "INSERT INTO address( addressID, address, address2, cityId, "
                 + "postalCode, phone, createDate, createdBy, lastUpdateBy) "
                 + "VALUES(?,?,?,?,?,?,?,?,?)";
@@ -508,6 +520,10 @@ public class MySQLConnection
     public void addCustomers( Customer... customers )
     {
         Set<Integer> customerIDs = getIDs("customer");
+        if (customerIDs == null) {
+            return;
+        }
+
         String query = "INSERT INTO customer(customerId, customerName, addressId, active, "
                 + "createDate, createdBy, lastUpdateBy) "
                 + "VALUES(?,?,?,?,?,?,?)";
@@ -690,6 +706,10 @@ public class MySQLConnection
     public void addAppointments( Appointment... appointments)
     {
         Set<Integer> appointmentIDs = getIDs("appointment");
+        if (appointmentIDs == null) {
+            return;
+        }
+
         String query = "INSERT INTO appointment(appointmentId, customerId, "
                 + "title, description, location, contact, url, start, end, "
                 + "createDate, createdBy, lastUpdateBy) "
@@ -713,7 +733,7 @@ public class MySQLConnection
                 // If this appointment has the default ID, get a new one
                 if( appointment.getAppointmentID() == Appointment.DEFAULT_ID )
                     appointment.setAppointmentID(
-                        (int)appointmentIDs.stream().count()
+                        appointmentIDs.size()
                     );
                 
                 // Ensure appointmentId is unique; if it has already been used,
@@ -826,8 +846,8 @@ public class MySQLConnection
      * Get a List<Integer> of already-used IDs from the given table.
      * Returns null if nothing found.
      * 
-     * @param tableName
-     * @return 
+     * @param tableName The name of the Table
+     * @return Set of IDs
      */
     private Set<Integer> getIDs( String tableName )
     {
@@ -857,8 +877,8 @@ public class MySQLConnection
      * Determine the primary key column name from the 
      * requested table
      * 
-     * @param tableName
-     * @return
+     * @param tableName Name of table
+     * @return Primary key column name
      */
     private String getPrimaryKeyColumn( String tableName )
     {

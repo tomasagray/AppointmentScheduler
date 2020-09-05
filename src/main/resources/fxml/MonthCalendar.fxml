@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<VBox HBox.hgrow="ALWAYS"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="self.me.wgu.appointmentscheduler.controller.custom.MonthCalendarController">
+    <GridPane HBox.hgrow="ALWAYS" fx:id="daysOfWeek">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+        </columnConstraints>
+        <Label text="Sunday" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label text="Monday" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label text="Tuesday" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Label text="Wednesday" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+        <Label text="Thursday" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+        <Label text="Friday" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+        <Label text="Saturday" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+    </GridPane>
+
+    <GridPane fx:id="monthCalendar"
+      HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="200" percentWidth="14.28"/>
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints vgrow="ALWAYS" prefHeight="200" percentHeight="20"/>
+            <RowConstraints vgrow="ALWAYS" prefHeight="200" percentHeight="20"/>
+            <RowConstraints vgrow="ALWAYS" prefHeight="200" percentHeight="20"/>
+            <RowConstraints vgrow="ALWAYS" prefHeight="200" percentHeight="20"/>
+            <RowConstraints vgrow="ALWAYS" prefHeight="200" percentHeight="20"/>
+        </rowConstraints>
+    </GridPane>
+</VBox>

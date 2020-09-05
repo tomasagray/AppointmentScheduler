@@ -13,8 +13,9 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import javafx.scene.control.Alert;
-import self.me.wgu.appointmentscheduler.Model.Appointment;
-import self.me.wgu.appointmentscheduler.Model.User;
+import org.jetbrains.annotations.NotNull;
+import self.me.wgu.appointmentscheduler.model.Appointment;
+import self.me.wgu.appointmentscheduler.model.User;
 
 /**
  *
@@ -30,7 +31,7 @@ public class LoginManager
         user = new User("_default");    // Ensure user is initialized
     }
     
-    public final static LoginManager getInstance()
+    public static LoginManager getInstance()
     {
         return instance;
     }
@@ -84,12 +85,10 @@ public class LoginManager
                         StandardOpenOption.APPEND ) 
             )
         {
-            os.append(
-                user.getUserName()+ ";" 
-                + user.getPassword() + ";"
-                + Timestamp.from(Instant.now()) + ";" 
-                + loginSuccess + "\n"
-            );
+            os.append(user.getUserName()).append(";")
+                .append(user.getPassword()).append(";")
+                .append(String.valueOf(Timestamp.from(Instant.now()))).append(";")
+                .append(String.valueOf(loginSuccess)).append("\n");
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -98,7 +97,7 @@ public class LoginManager
         return loginSuccess;
     }
     
-    public boolean logout(User user)
+    public void logout(@NotNull User user)
     {
         // Reset all views
         SceneManager.getInstance().getScenes()
@@ -118,37 +117,35 @@ public class LoginManager
         MySQLConnection.getInstance().setUserInactive(user);
         // Kick the user out to the login form
         SceneManager.getInstance().initializeLoginForm();
-        return true;
     }
     
     
     public void checkUpcomingAppointments()
     {
         // Get today's appointments
-        List<Appointment> todayAppts = MySQLConnection
+        List<Appointment> todayAppointments = MySQLConnection
                 .getInstance().getAppointments( 
                         ZonedDateTime.now().toLocalDate(),
                         ZonedDateTime.now().plusDays(2).toLocalDate()
                 );
-        
         // Check for any in next 15 minutes
-        todayAppts.stream().anyMatch((Appointment appt) -> {
+        todayAppointments.stream().anyMatch((Appointment appointment) -> {
             
             ZonedDateTime now = ZonedDateTime.now();
-            if( appt.getStart().isAfter(now) 
+            if( appointment.getStart().isAfter(now)
                     &&
-                appt.getStart().isBefore(now.plusMinutes(15)) 
+                appointment.getStart().isBefore(now.plusMinutes(15))
             ) {
                 String alertStr = "You have an appointment"
-                        + " with " + appt.getCustomer().getCustomerName()
-                        + " at " + AppointmentScheduler.formatTime( appt.getStart().getHour() )
+                        + " with " + appointment.getCustomer().getCustomerName()
+                        + " at " + AppointmentScheduler.formatTime( appointment.getStart().getHour() )
                         + ".\nDon't be late!";
                 Alert alert = new Alert( Alert.AlertType.INFORMATION, alertStr );
                 alert.showAndWait();
                 
                 return true;
             }
-            // No appointmemts in next 15 minutes
+            // No appointments in next 15 minutes
             return false;
         });
     }

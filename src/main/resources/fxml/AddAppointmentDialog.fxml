@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane
+    xmlns:fx="http://javafx.com/fxml/1" 
+    fx:controller="self.me.wgu.appointmentscheduler.controller.custom.AddAppointmentDialogController">
+ 
+    <stylesheets>
+        <URL value="@/css/main.css" />
+        <URL value="@/css/calendar.css" />
+        <URL value="@/css/appointment.css" />
+    </stylesheets>
+    
+    <top>
+        <VBox fx:id="appointmentDlgHeader">
+            <HBox alignment="BASELINE_RIGHT">
+                <Button fx:id="closeDialogButton" onAction="#handleCloseDialog">
+                    <graphic>
+                        <ImageView fitHeight="16" fitWidth="16">
+                            <Image
+                              url="/img/close-button.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+
+                <ImageView fitHeight="32" fitWidth="32">
+                    <Image
+                      url="/img/appointment.png"/>
+                </ImageView>
+
+                <TextField fx:id="appointmentName" promptText="Event name"/>
+            </HBox>
+        </VBox>
+        
+    </top>
+    
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+
+            <HBox spacing="20">
+                <ComboBox fx:id="appointmentStart">
+                    <items>
+                    </items>
+                </ComboBox>
+
+                <ComboBox fx:id="appointmentEnd">
+                    <items>
+                    </items>
+                </ComboBox>
+            </HBox>
+
+            <VBox spacing="15">
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <Label text="Contact: " style="-fx-font-size: 12pt">
+                    </Label>
+                    <ComboBox fx:id="customerNames">
+                        <items>
+                        </items>
+                    </ComboBox>
+                </HBox>
+
+                <TextField fx:id="appointmentDescription" promptText="Description"/>
+
+                <HBox spacing="10">
+                    <TextField fx:id="appointmentLocation" promptText="Location"/>
+                    <TextField fx:id="appointmentURL" promptText="URL"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <VBox alignment="CENTER">
+            <Label fx:id="errorMessage" styleClass="errorMessage" wrapText="TRUE">
+            </Label>
+
+            <HBox alignment="BASELINE_RIGHT" spacing="10" fx:id="modalSubmitBar">
+                <Button fx:id="deleteAppointmentButton" text="Delete"
+                  styleClass="deleteButton" visible="FALSE"
+                  onAction="#handleDeleteAppointment">
+                    <graphic>
+                        <ImageView fitHeight="24" fitWidth="24">
+                            <Image
+                              url="/img/delete.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="submitAppointment" text="Done" onAction="#handleDoneButton">
+                </Button>
+            </HBox>
+        </VBox>
+    </bottom> 
+</BorderPane>

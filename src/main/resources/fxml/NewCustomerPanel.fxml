@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox fx:id="newCustomerPanel"
+  fx:controller="self.me.wgu.appointmentscheduler.controller.NewCustomerPanelController"
+  xmlns:fx="http://javafx.com/fxml/1"
+  xmlns="http://javafx.com/javafx/8.0.151"
+  VBox.vgrow="ALWAYS">
+    <HBox styleClass="customerHeadingContainer" alignment="CENTER">
+        <Label text="New Customer" styleClass="customerHeading" wrapText="true">
+        </Label>
+    </HBox>
+
+    <VBox spacing="20">
+        <padding>
+            <Insets bottom="25" left="25" right="25" top="25"/>
+        </padding>
+
+        <VBox spacing="5">
+            <Label styleClass="subheading" text="Name"/>
+            <TextField fx:id="customerName" promptText="ex: John Doe"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label styleClass="subheading" text="Address"/>
+            <TextField fx:id="address" promptText="Address"/>
+            <TextField fx:id="address2" promptText="Address 2"/>
+
+            <ComboBox fx:id="city" promptText="Please select a city">
+                <items>
+                </items>
+            </ComboBox>
+
+            <ComboBox fx:id="country" promptText="Please select a country">
+                <items>
+                </items>
+            </ComboBox>
+
+            <TextField fx:id="postalCode" promptText="Postal Code"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label styleClass="subheading" text="Phone"/>
+            <TextField fx:id="customerPhone" promptText="(xxx) xxx-xxxx"/>
+        </VBox>
+
+        <HBox spacing="10">
+            <CheckBox fx:id="customerIsActive"/>
+            <Label styleClass="subheading" text="Active"/>
+        </HBox>
+
+
+        <HBox spacing="15">
+            <Button fx:id="saveEditCustomer" text="Save"
+              onAction="#handleSaveCustomer">
+            </Button>
+            <Button fx:id="cancelEditCustomer" text="Cancel"
+              onAction="#handleCancel"
+              styleClass="grayButton">
+            </Button>
+        </HBox>
+
+        <Label fx:id="errorMessage" styleClass="errorMessage" wrapText="true">
+        </Label>
+
+    </VBox>
+</VBox>

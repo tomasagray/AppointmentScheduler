@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<GridPane fx:id="applicationContainer"
+  prefHeight="850.0" prefWidth="1200.0"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="self.me.wgu.appointmentscheduler.controller.UIContainerController">
+
+    <stylesheets>
+        <URL value="@/css/main.css"/>
+    </stylesheets>
+
+    <VBox fx:id="menuBar"
+      GridPane.columnIndex="0" GridPane.rowIndex="0"
+      GridPane.vgrow="ALWAYS"
+      alignment="TOP_CENTER" styleClass="menuBar">
+        <Button fx:id="calendarButton" styleClass="menuButton"
+          onAction="#handleCalendarButton">
+            <graphic>
+                <ImageView fitHeight="24" fitWidth="24">
+                    <Image
+                      url="/img/calendar.png"/>
+                </ImageView>
+            </graphic>
+            <tooltip>
+                <Tooltip text="Calendar"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="customersButton" styleClass="menuButton"
+          onAction="#handleCustomersButton">
+            <graphic>
+                <ImageView fitHeight="24" fitWidth="24">
+                    <Image
+                      url="/img/customers.png"/>
+                </ImageView>
+            </graphic>
+            <tooltip>
+                <Tooltip text="Customer Contacts"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="reportsButton" styleClass="menuButton"
+          onAction="#handleReportsButton">
+            <graphic>
+                <ImageView fitHeight="24" fitWidth="24">
+                    <Image
+                      url="/img/reports.png"/>
+                </ImageView>
+            </graphic>
+            <tooltip>
+                <Tooltip text="Reports"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="settingsButton" styleClass="menuButton"
+          onAction="#handleSettingsButton">
+            <graphic>
+                <ImageView fitHeight="24" fitWidth="24">
+                    <Image
+                      url="/img/settings.png"/>
+                </ImageView>
+            </graphic>
+            <tooltip>
+                <Tooltip text="Settings"/>
+            </tooltip>
+        </Button>
+
+        <Button fx:id="logoutButton"
+          styleClass="menuButton" style="-fx-background-color: red"
+          onAction="#handleLogoutButton">
+            <graphic>
+                <ImageView fitHeight="24" fitWidth="24">
+                    <Image
+                      url="/img/logout.png"/>
+                </ImageView>
+            </graphic>
+            <tooltip>
+                <Tooltip text="Logout"/>
+            </tooltip>
+        </Button>
+    </VBox>
+
+    <VBox fx:id="mainUISpace"
+      GridPane.columnIndex="1" GridPane.rowIndex="0"
+      GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+    </VBox>
+
+</GridPane>

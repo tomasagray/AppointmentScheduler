@@ -8,15 +8,14 @@ package self.me.wgu.appointmentscheduler;
 
 import java.io.IOException;
 import java.util.*;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.*;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.*;
-import self.me.wgu.appointmentscheduler.Model.Appointment;
-import self.me.wgu.appointmentscheduler.View_Controller.CalendarController;
-import self.me.wgu.appointmentscheduler.View_Controller.CustomControls.AddAppointmentDialogController;
-import self.me.wgu.appointmentscheduler.View_Controller.UIContainerController;
+import self.me.wgu.appointmentscheduler.model.Appointment;
+import self.me.wgu.appointmentscheduler.controller.CalendarController;
+import self.me.wgu.appointmentscheduler.controller.UIContainerController;
 
 /**
  * Singleton class to manage the different scenegraphs 
@@ -31,7 +30,7 @@ public final class SceneManager
      * Nested class to contain associated FXMLLoader objects
      * and their data (as Parent objects).
      */
-    public class SceneNode 
+    public static class SceneNode
     {
         private final FXMLLoader loader;
         private final Parent parent;
@@ -62,11 +61,11 @@ public final class SceneManager
     private final Map<String, SceneNode> scenes = new HashMap<>();
     private Stage main;
     private final Stage appointmentDlg = new Stage(StageStyle.UNDECORATED);
-    private AddAppointmentDialogController appointmentDlgController=null;
+//    private final AddAppointmentDialogController appointmentDlgController=null;
     
     // View mode definition
-    public enum ViewMode { WEEK, MONTH };
-    
+    public enum ViewMode { WEEK, MONTH }
+
     private SceneManager()
     {
         
@@ -81,11 +80,6 @@ public final class SceneManager
                     this.closeAppointmentDialog();
                 }
             });
-        
-//        addScene("AddAppointment", "View_Controller/CustomControls/AddAppointmentDialog.fxml" );
-//        appointmentDlgController = getLoader("AddAppointment").getController();
-//        appointmentDlg.setScene( getScene("AddAppointment").getScene() );
-        
     }
     
     
@@ -106,11 +100,7 @@ public final class SceneManager
         
         if( node != null )
         {
-//            if( main.getScene() == null ) 
-//                main.setScene( node.getScene() );
-//            else 
                 main.setScene(node.getScene());
-//                main.getScene().setRoot( node.getParent() );
         }
     }
     
@@ -133,27 +123,15 @@ public final class SceneManager
         return scenes.get(name).getLoader();
     }
     
-    public synchronized void addScene( String name, String url ) 
-    {
-        try {
+    public synchronized void addScene( String name, String url ) throws IOException {
+
+        System.out.println("Class: " + getClass());
+        System.out.println("Resource: " + getClass().getResource(url));
             FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
-            Parent p = (Parent)loader.load();
+            Parent p = loader.load();
             SceneNode node = new SceneNode(loader, p);
             scenes.put( name, node );
-        } catch( IOException e ) {
-            System.out.println("FATAL ERROR! Could not find: " + url);
-            System.out.println( e.getMessage());
-            e.printStackTrace();
-            System.exit(1);
-        } catch( RuntimeException e ) {
-            System.out.println(
-                    "Caught runtime exception for " 
-                            + name + "\n(" 
-                            + url +"):"
-            );
-            System.out.println( e.getMessage() );
-            System.exit(1);
-        }
+
     }
     
     public synchronized boolean removeScene( String name )
@@ -185,15 +163,15 @@ public final class SceneManager
         // Position and display add appointment dialog
         appointmentDlg.setX(X);
         appointmentDlg.setY(Y);
-        appointmentDlgController.setAppointment(a);
-        appointmentDlgController.populateAppointmentDialog();
+//        appointmentDlgController.setAppointment(a);
+//        appointmentDlgController.populateAppointmentDialog();
         appointmentDlg.showAndWait();
     }
      
     public final void closeAppointmentDialog()
     {
         // Reset and close modal
-        appointmentDlgController.reset();
+//        appointmentDlgController.reset();
         appointmentDlg.close();
         
         // Re-draw calendar
