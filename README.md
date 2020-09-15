@@ -24,3 +24,5 @@ several languages and configuration options.
   office location, not on system time. Therefore, to test timezone 
   functionality, it is necessary to change the office location under
   Settings. It defaults to PHOENIX.
+  
+![WGU Excellence Award](award.jpg)
